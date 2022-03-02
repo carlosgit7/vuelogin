@@ -13,8 +13,8 @@
 
     const router = useRouter();
 
-    const logginIn = () => {
-        login(username.value, password.value);
+    const logginIn = async() => {
+        await login(username.value, password.value);
         if (isAuthenticated.value) {
             router.push("/");
       } else {
