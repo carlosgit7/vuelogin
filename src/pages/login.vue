@@ -6,7 +6,7 @@
     
 
 
-    const {isAuthenticated, login} = userAuth();
+    const {isAuthenticated, login, signup} = userAuth();
 
     const username = ref("");
     const password = ref("");
@@ -15,19 +15,28 @@
 
     const logginIn = async() => {
         await login(username.value, password.value);
+        goToHome();
+ };
+
+    const signingUp = async () => {
+        await signup(username.value, password.value);
+        goToHome();
+ };
+
+    const goToHome = () => {
         if (isAuthenticated.value) {
             router.push("/");
-      } else {
+        } else {
             setError("Invalid username or password");
             start();
-    }
-};
+        }
+ };
 
-const { error, setError } = loginError()
+    const { error, setError } = loginError()
 
-import { useTimeout, promiseTimeout } from "@vueuse/core";
+    import { useTimeout, promiseTimeout } from "@vueuse/core";
 
-const { ready, start } = useTimeout(3000, { controls: true });
+    const { ready, start } = useTimeout(3000, { controls: true });
 
 </script>
 
@@ -43,7 +52,22 @@ const { ready, start } = useTimeout(3000, { controls: true });
       <input type="password" placeholder="Password" v-model="password"
       :class="!ready && error ? 'border-2 border-red-500 p-1 rounded-md' : 'p-1 rounded-md'"
       />
-      <button type="submit" @submit.prevent="logginIn" class="bg-cyan-700 text-black py-1 rounded-md">Login</button>
+      <!-- <button type="submit" @submit.prevent="logginIn" class="bg-cyan-700 text-black py-1 rounded-md">Login</button> -->
+      <div class="flex space-x-1 text-black">
+          <button
+            type="submit"
+            @submit.prevent="logginIn"
+            class="w-1/2 py-1 bg-rose-600 rounded-md hover:bg-rose-700"
+          >
+            Login
+          </button>
+          <button
+            @click="signingUp"
+            class="w-1/2 py-1  bg-blue-600 rounded-md hover:bg-blue-700"
+          >
+            Sing Up
+          </button>
+        </div>
   </form>
   </div>
   <div v-if="!ready && error" class="absolute w-1/3 px-4 py-3 text-center text-red-800 bg-red-300 rounded-lg bottom-2 right-2 shadow-inner">
