@@ -6,7 +6,7 @@
     
 
 
-    const {isAuthenticated, login, signup} = userAuth();
+    const {isAuthenticated, login, signup, googleLogin} = userAuth();
 
     const username = ref("");
     const password = ref("");
@@ -22,6 +22,11 @@
         await signup(username.value, password.value);
         goToHome();
  };
+
+    const google = async() => {
+      await googleLogin();
+      goToHome();
+    };
 
     const goToHome = () => {
         if (isAuthenticated.value) {
@@ -45,7 +50,7 @@
   <h1 class="text-6xl tracking-tighter font-light">Login</h1>
   <div class="shadow-2xl border-1 rounded-md flex items-center justify-center bg-slate-300 overflow-hidden">
   <img src="../assets/loginBG.png" alt="bg-image" class="h-48">
-  <form @submit.prevent="logginIn" class="flex flex-col space-y-4 p-3">
+  <form @submit.prevent="logginIn" class="flex flex-col space-y-3 p-3">
       <input type="text" placeholder="Username" v-model="username"
       :class="!ready && error ? 'border-2 border-red-500 p-1 rounded-md' : 'p-1 rounded-md'"
       />
@@ -68,6 +73,12 @@
             Sing Up
           </button>
         </div>
+          <button
+            @click="google"
+            class="bg-green-400 hover:bg-green-500 rounded-md mt-0"
+          >
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="m-auto object-cover h-8 w-auto" alt="Google_2015_logo">
+          </button>
   </form>
   </div>
   <div v-if="!ready && error" class="absolute w-1/3 px-4 py-3 text-center text-red-800 bg-red-300 rounded-lg bottom-2 right-2 shadow-inner">
