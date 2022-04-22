@@ -16,7 +16,7 @@ const loggingOut = () => {
 <div class="bg-lime-600 px-6">
     <div class="conitainer mx-auto flex justify-between items-center">
         <router-link to="/"><h1 class="tracking-tighter py-6 text-4xl font-light text-black hover:cursor-pointer">
-            Vue<span class="font-semibold">RealAuth</span> 
+            <span class="font-semibold">Chat</span>AppWithFirebase 
         </h1></router-link>
         <nav>
             <ul class="flex space-x-4 text-black">
