@@ -6,6 +6,7 @@ import Index from './pages/index.vue';
 import About from './pages/about.vue';
 import Login from './pages/login.vue';
 import Secret from './pages/secret.vue';
+import Chat from './pages/chat.vue';
 import NotFound from './pages/404.vue';
 
 const { isAuthenticated } = userAuth();
@@ -30,6 +31,17 @@ const routes = [
         path: "/secret",
         name: "Secret",
         component: Secret,
+        beforeEnter: (to, from, next)=>{
+            if (!isAuthenticated.value) {
+                next("/login");
+                }
+                next();
+        },
+    },
+    {
+        path: "/chat",
+        name: "Chat",
+        component: Chat,
         beforeEnter: (to, from, next)=>{
             if (!isAuthenticated.value) {
                 next("/login");

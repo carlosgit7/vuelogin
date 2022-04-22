@@ -25,6 +25,7 @@ const loggingOut = () => {
                 <router-link v-if="!isAuthenticated" to="/login"><li class="py-8 px-4 hover:cursor-pointer hover:bg-rose-900 hover:text-gray-200">Login</li></router-link>
                 <div v-else class="flex">
                     <router-link to="/secret"><li class="py-8 px-4 hover:cursor-pointer hover:bg-rose-900 hover:text-gray-200">Secret</li></router-link>
+                    <router-link to="/chat"><li class="py-8 px-4 hover:cursor-pointer hover:bg-rose-900 hover:text-gray-200">Chat</li></router-link>
                     <button @click="loggingOut"><li class="py-8 px-4 hover:cursor-pointer hover:bg-rose-900 hover:text-gray-200">Logout</li></button>
                 </div>
             </ul>
