@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-6xl font-extralight">This is your private section</h1>
+    <h1 class="text-6xl font-extralight mt-10">This is your private section</h1>
     <h2 class="text-3xl font-light">Here is some encourament for your coding day</h2>
     <img src="../assets/banner.jpeg" alt="Know your limitations, then defy them" class="object-scale-down h-56 mt-5 shadow-2xl shadow-black border-2">
     <div class=" w-4/5 text-center px-5 mt-10 space-y-5 text-blue-900">
